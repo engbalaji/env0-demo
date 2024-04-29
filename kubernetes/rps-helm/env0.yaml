@@ -1,12 +1,12 @@
 version: 2
 
-deploy:
-  steps:
-    helmUpgrade:
-      before:
-        - name: List Contents
-          run: |
-            rm opa
+#deploy:
+#  steps:
+#    helmUpgrade:
+#      before:
+#        - name: List Contents
+#          run: |
+#            rm opa
 #     terraformInit:
 #       before:
 #    terraformPlan:
