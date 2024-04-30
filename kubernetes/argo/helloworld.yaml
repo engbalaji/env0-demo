@@ -50,8 +50,8 @@ spec:
 
       # Ignore locally missing valueFiles when installing Helm chart. Defaults to false
       ignoreMissingValueFiles: false
-      - name: "service.type"
-        value: "LoadBalancer"
+      name: "service.type"
+      value: "LoadBalancer"
       # Values file as block file. Prefer to use valuesObject if possible (see below)
       # values: |
       #   ingress:
