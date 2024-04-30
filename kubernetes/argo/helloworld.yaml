@@ -29,6 +29,8 @@ spec:
       passCredentials: false # If true then adds --pass-credentials to Helm commands to pass credentials to all domains
       # Extra parameters to set (same as setting through values.yaml, but these take precedence)
       parameters:
+      - name: "service.type"
+        value: "LoadBalancer"
       # - name: "nginx-ingress.controller.service.annotations.external-dns\\.alpha\\.kubernetes\\.io/hostname"
       #   value: mydomain.example.com
       # - name: "ingress.annotations.kubernetes\\.io/tls-acme"
@@ -50,8 +52,7 @@ spec:
 
       # Ignore locally missing valueFiles when installing Helm chart. Defaults to false
       ignoreMissingValueFiles: false
-      name: "service.type"
-      value: "LoadBalancer"
+
       # Values file as block file. Prefer to use valuesObject if possible (see below)
       # values: |
       #   ingress:
