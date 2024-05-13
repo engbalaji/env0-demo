@@ -7,6 +7,20 @@ deploy:
       - name: trigger jenkins
         run: |
           echo "Executing Jenkins pipeline"
+          curl --user $user:$token http://10.254.5.94:8080/job/docker-build-push/build?delay=0sec -X POST
       - name: wait for jenkins jobs to complete 
         run: | 
-          sleep 5
+          while true; do
+        # Make a GET request to your Jenkins API and store the JSON response in a variable
+          response=$(curl -s "$JENKINS_URL/job/$JOB_NAME/lastBuild/api/json")
+        # Extract the result field from the JSON response using jq (a command-line JSON processor)
+          result=$(echo "$response" | jq -r '.result')
+        # Check if the result is "true"
+          if [ "$result" = "SUCCESS" ]; then
+            echo "Result is true, breaking out of loop"
+            break
+          else
+            echo "Result is not true, sleeping for 5 seconds..."
+            sleep 5
+          fi
+          done
